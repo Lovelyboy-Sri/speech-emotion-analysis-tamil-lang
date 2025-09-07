@@ -8,7 +8,7 @@ from tensorflow.keras.models import load_model
 import io
 
 # Load the trained model
-model = load_model('emotionclassifier.h5')
+model = load_model('/workspaces/speech-emotion-analysis-tamil-lang/emotionclassifier.h5')
 
 # Define emotions corresponding to model outputs
 emotions =  ['angry', 'fear', 'happy', 'neutral', 'sad'] # Update with your actual emotion labels
@@ -19,6 +19,7 @@ app = FastAPI()
 @app.get("/")
 async def hello():
     return 'route to /predict and upload the audio file to predict the emotion'
+
 @app.post("/predict/")
 async def predict(file: UploadFile = File(...)):
     # Read the audio file
